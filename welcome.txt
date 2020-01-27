@@ -1,0 +1,8 @@
+This repository contains all the code examples and lab solutions written 
+during the "Using React" course offered at the National Marine Fisheries, AK Region, Juneau, Alaska, from February 24-27, 2020.
+
+Thank you
+
+Venkat Subramaniam
+venkats@agiledeveloper.com
+@venkat_s
