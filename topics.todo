@@ -1,0 +1,365 @@
+Using React
+Venkat Subramaniam
+venkats@agiledeveloper.com
+@venkat_s  
+
+Creating React Components:
+-What is React?
+-Simplistic approach
+-Performance
+-pros and cons
+	-easy to write
+	-easy to maintain
+	-lacks performance for large data/intricate views
+-The hard work approach
+-Performance	
+-pros and cons
+ -lot of work
+ -progressively gets harder
+ -error prone
+ -quite brittle
+-how does React help?
+-maintains virtual DOM
+-ease of programming
+-performance without being brittle
+-less error prone
+-The React Way
+-Performance
+-good separation of concerns
+-lab 1
+-What's a Component?
+-reusable, isolated piece of code that represents a UI view
+-a component
+	- may have state
+	- renders contents into a virtual DOM
+	-may have child components
+-let's create an application
+ -RenderDOM
+ -good separation of what, where, and how
+ -different destinations
+-creating a component	
+ -extends Component
+ -provide a render method
+-The render() method
+	-Browser DOM
+	-React DOM
+	-render() create a hierarchy of React elements
+	-React will convert React DOM to Browser DOM
+-The render() method may take
+	element, string, number, portal, null, boolean, array of elements, fragment
+-createElement()
+	- type, properties, children
+-ReactDOM
+ -does the rendering
+  -render()
+  -on the server-side: renderToString(), renderToStaticMarkup()
+ -render(elementToRender, DOMElementToRenderInto)
+-tree of elements
+-A Hello application
+ -index.html
+ -start.js
+ -app.js
+-creating state
+-creating view and binding
+ -setting state vs. setState
+-State
+-Creating View
+ -createElement
+ -Defining attributes
+ -key
+-Key
+ -needed for efficiency
+ -unique among siblings
+ -avoid duplication
+-Using Key
+-lab 2
+
+Diving into JSX:
+-creating elements
+ -rather unwieldy
+ -hard to write
+ -hard to read
+-JavaScript eXtensions
+ -feels like HTML
+ -React JSX tags
+ -type becomes tag
+ -attributes become attributes
+ -children become children
+-JSX
+	React.createElement(type, properties, children)
+ becomes
+ <type properties>children</type>
+-JSX
+ React.createElement('div', { className: value }, "test")
+  becomes
+ <div className={ value }>test</div>
+ - {...} is a JavaScript expression
+-using JSX
+-creating custom elements
+ -create a component
+ -use its name as element name
+ -pass properties
+ -pass child elements
+-a DisplayCount component
+ -using props
+ -using props.children
+-lab
+
+Working with State and Events:
+-properties
+ -attributes of elements
+ -passed like attributes of HTML elements
+ -accessed using props
+-Creating a Greet component and passing name to it
+-missing properties
+-default properties
+	-static defaultProps 
+	-example: <Greet name= when=> (there, today as default)
+-setting state
+ -state.when = props.when.toUpperCase()
+-Should we use a property or state?
+-State change woes
+	-what happens when parent changes the property but child uses state?
+  -parent changes when from right now to "at this moment"	
+-getDerivedStateFromProps(props, state)
+ -static method
+ -state that is "derived" from properties
+ -initialize state in the constructor
+ -if no change, return null
+ -if there is a change, return the new state
+-using getDerivedStateFromProps
+-lab 1
+-Event Handling
+ -toggle(e)
+ -alert e.target.textContent - you clicked on NAME or WHEN
+ -{ this.toggle }
+-trouble accessing this from this handler
+-one fix to handle the fail - bind
+ -smelly
+ -error prone
+-another fix for the fail
+-event pooling
+-change the clicked item to uppercase and lowercase after a delay
+-better not to design in a way to need this
+-use event right away and not afterwards
+-what if you need the event later? 
+ -option 1: use persist
+ -option 2: ask for help, avoid this feature
+-lab 2
+
+Components and Lifecycle:
+-constructor
+ -don't do any subscriptions here
+ -keep it short, fast
+ -pass props to super() first
+ -assign to state, but not using setState()
+ -don't write constructor if you do not really need one
+-life cycle events
+ -mounting events when created and inserted into DOM
+ -updating events when property or state changes
+-mounting events
+ -getDerivedStateFromProps(props state)
+ -render()
+ -componentDidMount()—DOM has been rendered
+ -componentWillUnmount()
+-Let's observe events using a Display component that should count
+ -let the parent unmount if count == 0
+-updating events
+ -getDerivedStateFromProps(props, state)
+ -shouldComponentUpdate(nextProps, nextState) - false is a hint
+ -render()
+ -getSnapshotBeforeUpdate(prevProps, prevState)
+ -componentDidUpdate(prevProps, prevState, snapshot)
+-Let's observe update events
+-using getSnapshotBeforeUpdate
+ -capture current details of the DOM before the DOM is changed
+ -let's implement proper scrolling using this feature
+ -ul { height: 200px; overflow: scroll; list-style-type: none; }
+ -view last element to get autoscroll. otherwise do not be disturbed
+ -prevProps.value.length < this.props.value.length
+ -scrolTop, scrollHeight, offsetHeight = this.refs._ul
+ -lastVisible = 
+   snapshot.scrollHeight - snapshot.scrollTop < (snapshot.offsetHeight + 10)
+ -this.refs._ul.scrollTop = this.refs._ul.scrollHeight
+-error boundary
+-program defensively
+ -constructor failures
+ -child component failures
+ -render failures
+ -life cycle event failures
+-componentDidCatch(error, info)
+-how to cause events?
+ -setState
+ -forceUpdate - not preferred
+-setState
+ -not instantaneous change of state
+ -queues change
+ -simple form take new state
+ -merges the object with previous state
+-let's play with state change (left and right click count)
+-setState not instantaneous
+	-render() will act on new state
+	-but what if we need to act on state change?
+  -provide a callback
+-a verbose setState
+ -a function as first parameter
+ -takes prevState, props
+ -returns the new state
+-proper cleanup
+ -show time only if show is true
+ -componentWillUnmount()
+-accessing children
+-lab 1
+-creating reusable components
+-working with multiple components
+ -Task with showcompleted
+-lab 2
+
+Creating Validators:
+-Properties
+-Sending values for properties and receiving them
+-using default properties 
+	-title is missing
+-validators
+-PropTypes array, bool, func, number, object, string, symbol
+-https://www.npmjs.com/package/prop-types
+-propTypes
+ -bool
+ -arrayOf(PropTypes.instanceOf(...))
+-import PropTypes from 'prop-types';
+-What if we pass wrong type for a property?
+ -title={true}
+ -DisplayTasks.propTypes = { title: PropTypes.string };
+-Required Validation - isRequired
+ -DisplayTasks.propTypes = { title: PropTypes.string.isRequired };
+-Adding more validation
+  showcompleted: PropTypes.bool.isRequired,
+  tasks: PropTypes.arrayOf(PropTypes.instanceOf(Task)).isRequired
+-custom validators
+ -write a function that returns either Error or null
+-validate title to start with uppercase
+ -function(props, propertyName, component)
+ -if(!/[A-Z]/.test(props[propertyName][0])) {
+-More complex validations are also possible
+	-function(props, key, componentName, location, propFullName)
+-validate task name is not duplicated   
+-lab
+
+State Management:
+-state
+-client-side data
+-components need them
+-how to share
+-Redux data store
+-single store
+-create store
+-make change 
+-subscribe to change notifications
+-save state
+-Three principles of Redux
+ -single source of truth
+ -state is read-only
+ -transform state with pure functions
+-Key players
+ -state
+ -action
+ -reducers
+-state tree and transformations
+-action
+ -type and payload
+-reduces
+-creating a store
+-using local storage for persistence
+-transformations
+-subscribing to events
+-lab
+
+Creating Applications:
+-creating server side code
+-verifying the server side works
+-set up client side code
+-create a landing page     
+ - h1 main Your Tasks
+-connect landing page to routes
+ -react-router-dom
+-link vs navlink
+ - Add Task | Display Tasks
+ - nav
+ -import { BrowserRouter, NavLink, Route } from 'react-router-dom';
+ - BrowserRouter
+ -<NavLink to="/add">Add Task</NavLink>
+ -<Route path="/add" component={ AddTask }></Route>
+ -<Route exact path="/" component={DisplayTasks} />
+-fetching data from server
+ -create Task with id, name, completed
+ -create Service to getTasks
+ -whatwg-fetch
+ -promises
+ -if(!response.ok)
+   throw new Error(`Error getting data from server: ${response.statusText}`);
+ - this.setState({ hasError: true, error: `Error: ${error.message}` });
+-storing data on the client side
+ -export const createTodoStore = (tasks) => createStore(reducers, tasks);
+ -this.store = createTodoStore([]);
+ -componentDidMount: 
+  this.unsubscribe = this.store.subscribe(() => this.setState({}));
+ -componentWillUnmount: this.unsubscribe(); 
+ -this.store.dispatch(createRefresh(tasks)); 
+-how to pass store?
+ -each component may import - easy to write, hard to test
+ -may pass through props - easy to test, hard to write
+ -pass component using context
+ -use Redux Provider
+ App.childContextTypes = { store: PropTypes.object.isRequired }
+ getChildContext() {
+   return {
+     store: this.store
+   };
+ }
+-take user input
+ AddTask.contextTypes = {
+  store: PropTypes.object
+ }
+ 
+ get enabled() {
+   return this.refs._taskName && this.refs._taskName.value !== '';
+ } 
+
+ disabled={ !this.enabled }- for create button
+ input onChange= { () => this.setState({}) }
+
+-post data
+ static addTask(name) {
+   return fetch('/tasks', { 
+       method: 'POST',
+       headers: {
+         'Content-Type': 'application/json'
+       },
+       body: JSON.stringify({ name })
+     })
+     ....
+ }
+-Display tasks
+	static toggleCompleted(taskId) {
+    return fetch(`/tasks/changestatus/${taskId}`, { 
+        method: 'POST',
+      })
+      .then(response => this.checkResponse(response)) 
+      .then(response => response.text());
+  }
+  
+  <span className="left"><ListTasks showcompleted={true} title='Completed Tasks' /></span>
+  <span className="right"><ListTasks showcompleted={false} title='Pending Tasks' /></span>
+
+  <input type="checkbox" 
+    defaultChecked={ task.completed } onChange={ () => this.toggleCompleted(task.id) }/>
+
+-lab
+
+Automated Testing:
+-testing JavaScript
+-testing React
+-testing Redux
+-testing components
+-measuring code coverage
+-lab
