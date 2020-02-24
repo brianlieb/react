@@ -1,0 +1,15 @@
+Create a React program that displays the current date, for example, in the 
+format: Today is Mon Jan 01 2018
+
+
+
+Start by creating a directory named dateapp.
+cd dateapp
+Run npm init
+npm install --save-dev lite-server
+Copy over the webpack.config.js and bs-config.js to the dateapp directory
+Create a directory src under dateapp
+Create a file index.html under src
+Create a file lab.js under src
+
+To create a date String you may use the new Date().toDateString() method.
