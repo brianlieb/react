@@ -1,0 +1,17 @@
+In this lab we will style the table of airport data so the heading line has a distinct color. Then, we will zebra code each line, even lines different from odd lines.
+
+After that, when the user hovers the mouse over a line (not the heading line), change the airport name to all uppercase. When the user leaves that row, change the name back to mixed case.
+
+Commands you need:
+npm install
+npm test
+
+To view the coverage:
+npm run coverage
+
+To lint:
+npm run eslint
+
+After all tests pass:
+npm run build
+npm start
