@@ -20,15 +20,15 @@ describe('DisplayAirportStatus test', function() {
   
   afterEach(() => sandbox.restore());
 
-  xit('DisplayAirportStatus constructor passes props to super', () => {
+  it('DisplayAirportStatus constructor passes props to super', () => {
     expect(component.props).to.be.eql({});
   });
 
-  xit('DisplayAirportStatus initilaizes sortedAirportInfo', () => {
+  it('DisplayAirportStatus initilaizes sortedAirportInfo', () => {
     expect(component.state.sortedAirportInfo).to.be.eql([]);
   });
   
-  xit('getDerivedStateFromProps creates sortedAirportInfo from props', () => { 
+  it('getDerivedStateFromProps creates sortedAirportInfo from props', () => {
                                                                                               
     const props = { data: [
       new Airport('IAD', 'Washington Dulles International', 84.14, true),
@@ -55,7 +55,7 @@ describe('DisplayAirportStatus test', function() {
     expect(newState.sortedAirportInfo[props.data.length - 1].code).to.be.eql('STL');
   });
 
-  xit('getDerivedStateFromProps does not mutate props', () => { 
+  it('getDerivedStateFromProps does not mutate props', () => {
                                                                                               
     const props = deepFreeze({ data: [
       new Airport('IAD', 'Washington Dulles International', 84.14, true),
@@ -67,7 +67,7 @@ describe('DisplayAirportStatus test', function() {
     expect(true).to.be.true;
   });
   
-  xit('component renders the sorted airportInfo', () => {
+  it('component renders the sorted airportInfo', () => {
     
     const airportInfo = [
       new Airport('IAH', 'Houston Bush International', 99.20, false),      
@@ -83,7 +83,7 @@ describe('DisplayAirportStatus test', function() {
     expect(wrapper.find('tr').at(1).key()).to.be.eql('DENKEY');
   });
   
-  xit('getDerivedStateFromProps returns aiport name unchanged if no airport selected', () => {
+  it('getDerivedStateFromProps returns aiport name unchanged if no airport selected', () => {
     const props = { data: [
       new Airport('IAD', 'Washington Dulles International', 84.14, true),
       new Airport('IAH', 'Houston Bush International', 99.20, false),
@@ -95,7 +95,7 @@ describe('DisplayAirportStatus test', function() {
     expect(sortedAirportInfo[1].name === 'Houston Bush International').to.be.true;
   });
 
-  xit('getDerivedStateFromProps returns aiport name in all caps for selected airport', () => {
+  it('getDerivedStateFromProps returns aiport name in all caps for selected airport', () => {
     const props = { data: [
       new Airport('IAD', 'Washington Dulles International', 84.14, true),
       new Airport('IAH', 'Houston Bush International', 99.20, false),
@@ -107,7 +107,7 @@ describe('DisplayAirportStatus test', function() {
     expect(sortedAirportInfo[1].name.includes('HOUSTON BUSH INTERNATIONAL')).to.be.true;
   });
   
-  xit('highlight airport sets selected in state to the given airport', () => {
+  it('highlight airport sets selected in state to the given airport', () => {
     const airport = new Airport('IAH', 'Houston Bush International', 99.20, false);
     
     component.setState = sandbox.stub(component, 'setState')
@@ -118,7 +118,7 @@ describe('DisplayAirportStatus test', function() {
     expect(component.setState.called).to.be.true;
   });
   
-  xit('tr onMouseEnter calls highlight with current airport', () => {
+  it('tr onMouseEnter calls highlight with current airport', () => {
     const den = new Airport('DEN', 'Denver International Airport', 62.00, true);
     
     const airportInfo = [
@@ -137,7 +137,7 @@ describe('DisplayAirportStatus test', function() {
     expect(highlightStub.called).to.be.true;
   });
 
-  xit('tr onMouseLeave calls highlight with null', () => {
+  it('tr onMouseLeave calls highlight with null', () => {
     const den = new Airport('DEN', 'Denver International Airport', 62.00, true);
     
     const airportInfo = [
