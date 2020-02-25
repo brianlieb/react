@@ -4,106 +4,106 @@ venkats@agiledeveloper.com
 @venkat_s  
 
 Creating React Components:
--What is React?
--Simplistic approach
--Performance
--pros and cons
-	-easy to write
-	-easy to maintain
-	-lacks performance for large data/intricate views
--The hard work approach
--Performance	
--pros and cons
- -lot of work
- -progressively gets harder
- -error prone
- -quite brittle
--how does React help?
--maintains virtual DOM
--ease of programming
--performance without being brittle
--less error prone
--The React Way
--Performance
--good separation of concerns
--lab 1
--What's a Component?
--reusable, isolated piece of code that represents a UI view
--a component
-	- may have state
-	- renders contents into a virtual DOM
-	-may have child components
--let's create an application
- -RenderDOM
- -good separation of what, where, and how
- -different destinations
--creating a component	
- -extends Component
- -provide a render method
--The render() method
-	-Browser DOM
-	-React DOM
-	-render() create a hierarchy of React elements
-	-React will convert React DOM to Browser DOM
--The render() method may take
+✓What is React?
+✓Simplistic approach
+✓Performance
+✓pros and cons
+	✓easy to write
+	✓easy to maintain
+	✓lacks performance for large data/intricate views
+✓The hard work approach
+✓Performance	
+✓pros and cons
+ ✓lot of work
+ ✓progressively gets harder
+ ✓error prone
+ ✓quite brittle
+✓how does React help?
+✓maintains virtual DOM
+✓ease of programming
+✓performance without being brittle
+✓less error prone
+✓The React Way
+✓Performance
+✓good separation of concerns
+✓lab 1
+✓What's a Component?
+✓reusable, isolated piece of code that represents a UI view
+✓a component
+	✓ may have state
+	✓ renders contents into a virtual DOM
+	✓may have child components
+✓let's create an application
+ ✓RenderDOM
+ ✓good separation of what, where, and how
+ ✓different destinations
+✓creating a component	
+ ✓extends Component
+ ✓provide a render method
+✓The render() method
+	✓Browser DOM
+	✓React DOM
+	✓render() create a hierarchy of React elements
+	✓React will convert React DOM to Browser DOM
+✓The render() method may take
 	element, string, number, portal, null, boolean, array of elements, fragment
--createElement()
-	- type, properties, children
--ReactDOM
- -does the rendering
-  -render()
-  -on the server-side: renderToString(), renderToStaticMarkup()
- -render(elementToRender, DOMElementToRenderInto)
--tree of elements
--A Hello application
- -index.html
- -start.js
- -app.js
--creating state
--creating view and binding
- -setting state vs. setState
--State
--Creating View
- -createElement
- -Defining attributes
- -key
--Key
- -needed for efficiency
- -unique among siblings
- -avoid duplication
--Using Key
--lab 2
+✓createElement()
+	✓ type, properties, children
+✓ReactDOM
+ ✓does the rendering
+  ✓render()
+  ✓on the server-side: renderToString(), renderToStaticMarkup()
+ ✓render(elementToRender, DOMElementToRenderInto)
+✓tree of elements
+✓A Hello application
+ ✓index.html
+ ✓start.js
+ ✓app.js
+✓creating state
+✓creating view and binding
+ ✓setting state vs. setState
+✓State
+✓Creating View
+ ✓createElement
+ ✓Defining attributes
+ ✓key
+✓Key
+ ✓needed for efficiency
+ ✓unique among siblings
+ ✓avoid duplication
+✓Using Key
+✓lab 2
 
 Diving into JSX:
--creating elements
- -rather unwieldy
- -hard to write
- -hard to read
--JavaScript eXtensions
- -feels like HTML
- -React JSX tags
- -type becomes tag
- -attributes become attributes
- -children become children
--JSX
+✓creating elements
+ ✓rather unwieldy
+ ✓hard to write
+ ✓hard to read
+✓JavaScript eXtensions
+ ✓feels like HTML
+ ✓React JSX tags
+ ✓type becomes tag
+ ✓attributes become attributes
+ ✓children become children
+✓JSX
 	React.createElement(type, properties, children)
  becomes
  <type properties>children</type>
--JSX
+✓JSX
  React.createElement('div', { className: value }, "test")
   becomes
  <div className={ value }>test</div>
- - {...} is a JavaScript expression
--using JSX
--creating custom elements
- -create a component
- -use its name as element name
- -pass properties
- -pass child elements
--a DisplayCount component
- -using props
- -using props.children
--lab
+ ✓ {...} is a JavaScript expression
+✓using JSX
+✓creating custom elements
+ ✓create a component
+ ✓use its name as element name
+ ✓pass properties
+ ✓pass child elements
+✓a DisplayCount component
+ ✓using props
+ ✓using props.children
+✓lab
 
 Working with State and Events:
 -properties

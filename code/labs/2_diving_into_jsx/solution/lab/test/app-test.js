@@ -76,7 +76,7 @@ describe('app test', function() {
     expect(clock.timers).to.be.eql({});
   });
 
-  it('App renders a stop nbutton', () => {
+  it('App renders a button', () => {  
     expect(shallow(<App />).html().includes('<button>Stop</button>')).to.be.true;
   });
   
