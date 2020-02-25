@@ -18,20 +18,20 @@ describe('app test', function() {
   
   afterEach(() => sandbox.restore());
   
-  xit('canary test', () => {
+  it('canary test', () => {
     expect(true).to.be.true;
   });
 
-  xit('App renders div', () => {
+  it('App renders div', () => {
     expect(shallow(<App />).html().includes('<div>')).to.be.true;
   });
 
-  xit("App renders today's date", () => {
+  it("App renders today's date", () => {
     const today = new Date().toDateString(); 
     expect(shallow(<App />).text().includes(today)).to.be.true;
   });
   
-  xit('App renders current time', () => {
+  it('App renders current time', () => {
     const methodStub = sandbox.stub(Date.prototype, 'toLocaleTimeString')
       .returns('whatever');
 
@@ -40,7 +40,7 @@ describe('app test', function() {
     expect(methodStub.called).to.be.true;
   });
   
-  xit("App's componentDidMount calls startTimer", () => {
+  it("App's componentDidMount calls startTimer", () => {
     const app = new App();  
     app.startTimer = sandbox.stub();
     
@@ -49,7 +49,7 @@ describe('app test', function() {
     expect(app.startTimer.called).to.be.true;
   });
   
-  xit("App's startTimer calls setInterval", () => {
+  it("App's startTimer calls setInterval", () => {
     const app = new App();
     const setStateStub = sinon.stub(app, 'setState')
       .withArgs({});
@@ -60,14 +60,14 @@ describe('app test', function() {
     expect(setStateStub.called).to.be.true;
   });
   
-  xit("App's startTimer sets the interval id", () => {
+  it("App's startTimer sets the interval id", () => {
     const app = new App();
     app.startTimer();
                                        
     expect(app.intervalId.id.toString()).to.be.eql(Object.keys(clock.timers)[0]);
   });
   
-  xit("App's stopTimer cancels the timer", () => {
+  it("App's stopTimer cancels the timer", () => {
     const app = new App();
     app.startTimer();
     
@@ -76,7 +76,7 @@ describe('app test', function() {
     expect(clock.timers).to.be.eql({});
   });
 
-  xit('App renders a button', () => {  
+  it('App renders a button', () => {  
     expect(shallow(<App />).html().includes('<button>Stop</button>')).to.be.true;
   });
   
