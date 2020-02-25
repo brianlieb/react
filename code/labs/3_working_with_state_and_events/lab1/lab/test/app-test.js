@@ -22,19 +22,19 @@ describe('app test', function() {
   
   afterEach(() => sandbox.restore());
   
-  xit('canary test', () => {
+  it('canary test', () => {
     expect(true).to.be.true;
   });
 
-  xit('App constructor passes props to super', () => {
+  it('App constructor passes props to super', () => {
     expect(app.props).to.be.eql({});
   });
 
-  xit('App should initialize airport data', () => {
+  it('App should initialize airport data', () => {
     expect(app.state.airportInfo).to.be.eql([]);
   });
 
-  xit('App should load airport data in componentDidMount', () => {
+  it('App should load airport data in componentDidMount', () => {
     const airportInfo = [
       new Airport('IAD', 'Washington Dulles International', 84.14, true),
       new Airport('IAH', 'Houston Bush International', 99.20, false),
@@ -61,15 +61,15 @@ describe('app test', function() {
     expect(app.setState.called).to.be.true;
   });
   
-  xit('App renders page title', () => {
+  it('App renders page title', () => {
     expect(shallow(<App/>).contains(<h1>Airport Status</h1>)).to.be.true;
   });
   
-  xit('App renders DisplayAirportStatus', () => {
+  it('App renders DisplayAirportStatus', () => {
     expect(shallow(<App />).find('DisplayAirportStatus').length).to.be.eql(1);
   });
 
-  xit('App passes airportInfo to DisplayAirportStatus', () => {
+  it('App passes airportInfo to DisplayAirportStatus', () => {
     const wrapper = shallow(<App />);
     
     const displayAirportStatus = wrapper.find('DisplayAirportStatus');
@@ -77,7 +77,7 @@ describe('app test', function() {
     expect(displayAirportStatus.props().data).to.be.eql(wrapper.state().airportInfo);
   });
 
-  xit('App changeData modifies airportData', () => {
+  it('App changeData modifies airportData', () => {
     app.setState = function(data) {
       this.state = data;
     };
@@ -91,7 +91,7 @@ describe('app test', function() {
     expect(initialData[0].temperature < app.state.airportInfo[0].temperature).to.be.true;
   });
 
-  xit('App changeData revers back to original data on alternate calls', () => {
+  it('App changeData revers back to original data on alternate calls', () => {
     app.setState = function(data) {
       this.state = data;
     };
@@ -106,7 +106,7 @@ describe('app test', function() {
     expect(initialData[0].temperature === app.state.airportInfo[0].temperature).to.be.true;
   });
   
-  xit('App calls changeData every second', () => {
+  it('App calls changeData every second', () => {
     app.changeData = sinon.stub(app, 'changeData');
     app.setState = function(data) {
       this.state = data;

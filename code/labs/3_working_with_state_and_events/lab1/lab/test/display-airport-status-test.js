@@ -20,15 +20,15 @@ describe('DisplayAirportStatus test', function() {
   
   afterEach(() => sandbox.restore());
 
-  xit('DisplayAirportStatus constructor passes props to super', () => {
+  it('DisplayAirportStatus constructor passes props to super', () => {
     expect(component.props).to.be.eql({});
   });
 
-  xit('DisplayAirportStatus initilaizes sortedAirportInfo', () => {
+  it('DisplayAirportStatus initilaizes sortedAirportInfo', () => {
     expect(component.state.sortedAirportInfo).to.be.eql([]);
   });
   
-  xit('getDerivedStateFromProps creates sortedAirportInfo from props', () => { 
+  it('getDerivedStateFromProps creates sortedAirportInfo from props', () => {
                                                                                               
     const props = { data: [
       new Airport('IAD', 'Washington Dulles International', 84.14, true),
@@ -55,7 +55,7 @@ describe('DisplayAirportStatus test', function() {
     expect(newState.sortedAirportInfo[props.data.length - 1].code).to.be.eql('STL');
   });
 
-  xit('getDerivedStateFromProps does not mutate props', () => { 
+  it('getDerivedStateFromProps does not mutate props', () => {
                                                                                               
     const props = deepFreeze({ data: [
       new Airport('IAD', 'Washington Dulles International', 84.14, true),
@@ -67,7 +67,7 @@ describe('DisplayAirportStatus test', function() {
     expect(true).to.be.true;
   });
   
-  xit('component renders the sorted airportInfo', () => {
+  it('component renders the sorted airportInfo', () => {
     
     const airportInfo = [
       new Airport('IAH', 'Houston Bush International', 99.20, false),      
