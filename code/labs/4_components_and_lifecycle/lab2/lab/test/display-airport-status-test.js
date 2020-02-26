@@ -26,7 +26,7 @@ describe('DisplayAirportStatus test', function() {
   
   afterEach(() => sandbox.restore());
   
-  xit('extractAndSortAirport for delayed', () => {
+  it('extractAndSortAirport for delayed', () => {
     const result = component.extractAndSortAirport(airports, true);
     
     expect(result.length).to.be.eql(2);
@@ -34,7 +34,7 @@ describe('DisplayAirportStatus test', function() {
     expect(result[1].code).to.be.eql('ONE');
   });
 
-  xit('extractAndSortAirport for not delayed', () => {
+  it('extractAndSortAirport for not delayed', () => {
     const result = component.extractAndSortAirport(airports, false);
     
     expect(result.length).to.be.eql(2);
@@ -42,7 +42,7 @@ describe('DisplayAirportStatus test', function() {
     expect(result[1].code).to.be.eql('TWO');
   });
   
-  xit('render calls extractAndSortAirport for delayed', () => {
+  it('render calls extractAndSortAirport for delayed', () => {
     const extractAndSortAirportStub = sandbox.stub(DisplayAirportStatus.prototype, 'extractAndSortAirport')
       .withArgs(airports, true)
       .returns(airports);
@@ -52,7 +52,7 @@ describe('DisplayAirportStatus test', function() {
     expect(extractAndSortAirportStub.called).to.be.true;
   });
 
-  xit('render calls extractAndSortAirport for not delayed', () => {
+  it('render calls extractAndSortAirport for not delayed', () => {
     const extractAndSortAirportStub = sandbox.stub(DisplayAirportStatus.prototype, 'extractAndSortAirport')
       .withArgs(airports, false)
       .returns(airports);
@@ -62,7 +62,7 @@ describe('DisplayAirportStatus test', function() {
     expect(extractAndSortAirportStub.called).to.be.true;
   });
 
-  xit('render renders result from extractAndSortAirport', () => {
+  it('render renders result from extractAndSortAirport', () => {
     sandbox.stub(DisplayAirportStatus.prototype, 'extractAndSortAirport')
       .withArgs(airports, true)
       .returns([
@@ -73,7 +73,7 @@ describe('DisplayAirportStatus test', function() {
     const wrapper = shallow(<DisplayAirportStatus data={ airports } delayed={ true }/>);
     
     const html = wrapper.html();
-    
+
     expect(html.includes('<td>A</td><td>a</td><td>12.12</td>')).to.be.true;
   });
 });

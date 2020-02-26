@@ -112,11 +112,11 @@ describe('app test', function() {
     expect(app.changeData.called).to.be.true;
   });
   
-  xit('App renders DisplayAirportStatus', () => {
+  it('App renders DisplayAirportStatus', () => {
     expect(shallow(<App />).find('DisplayAirportStatus').length).to.be.eql(2);
   });
 
-  xit('App passes airportInfo to DisplayAirportStatus', () => {
+  it('App passes airportInfo to DisplayAirportStatus', () => {
     const wrapper = shallow(<App />);
     
     const displayAirportStatus1 = wrapper.find('DisplayAirportStatus').at(0);

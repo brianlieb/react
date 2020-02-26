@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Airport from './airport';
+import DisplayAirportStatus from "./display-airport-status";
 
 export default class App extends Component {
   constructor(props) {
@@ -54,6 +55,8 @@ export default class App extends Component {
   render() {
     return <div>
       <h1>Airport Status</h1>
+      <DisplayAirportStatus data={this.state.airportInfo} delayed={true}/>
+      <DisplayAirportStatus data={this.state.airportInfo} delayed={false}/>
     </div>;
   }
 }
