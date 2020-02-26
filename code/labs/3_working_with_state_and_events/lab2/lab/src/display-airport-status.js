@@ -5,10 +5,9 @@ import Airport from './airport';
 export default class DisplayAirportStatus extends Component {
   constructor(props) {
     super(props);
-    
     this.state = { sortedAirportInfo: [] };
   }                                        
-  
+
   static getDerivedStateFromProps(props , state ) {
     const byCode = (airport1, airport2) => airport1.code.localeCompare(airport2.code);
     const highlight = (a, state) =>
