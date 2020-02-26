@@ -1,0 +1,10 @@
+Create a React application that has a list of workers. A worker may be full time or part time, has a first and last name.
+
+Let's create components to display full time workers or part time workers.
+Each component will display its workers in a table.
+
+When a worker's name is clicked on, their status changes from full time to part time or vice versa.
+
+A new worker may be created by providing name and status (full time or part time - checkbox).
+
+Use Redux to hold the state.
