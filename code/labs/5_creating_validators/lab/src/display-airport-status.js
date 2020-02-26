@@ -15,6 +15,7 @@ export default class DisplayAirportStatus extends Component {
     const airports = this.extractAndSortAirport(this.props.data, this.props.delayed);      
     
     return <div>
+      <h2>{this.props.title}</h2>
       <table>
         <tr><th>Code</th><th>Name</th><th>Temperature</th></tr>
         {
@@ -25,7 +26,19 @@ export default class DisplayAirportStatus extends Component {
   }
 }
 
+DisplayAirportStatus.defaultProps = {
+  title: 'Please Set A Title'
+};
+
 DisplayAirportStatus.propTypes = {
   data: PropTypes.arrayOf(PropTypes.instanceOf(Airport)),
   delayed: PropTypes.bool,
+
+  title: function(props, key, component) {
+    if (props.title.split(' ')
+      .every(p => /[A-Z]/.test(p[0]))) {
+      return null;
+    }
+    return new Error(`Each word of ${key} for ${component} should be capitalized`);
+  }
 };

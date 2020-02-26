@@ -55,8 +55,8 @@ export default class App extends Component {
   render() {
     return <div>
       <h1>Airport Status</h1>
-      <DisplayAirportStatus data={ this.state.airportInfo } delayed={ true } ></DisplayAirportStatus>
-      <DisplayAirportStatus data={ this.state.airportInfo } delayed={ false } ></DisplayAirportStatus>
+      <DisplayAirportStatus title='Airports With Delays' data={ this.state.airportInfo } delayed={ true } ></DisplayAirportStatus>
+      <DisplayAirportStatus title='Airports With No Delays' data={ this.state.airportInfo } delayed={ false } ></DisplayAirportStatus>
     </div>;
   }
 }

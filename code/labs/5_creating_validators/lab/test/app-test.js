@@ -128,7 +128,7 @@ describe('app test', function() {
     expect(displayAirportStatus2.props().delayed).to.be.eql(false);
   });
 
-  xit('App passes title to DisplayAirportStatus', () => {
+  it('App passes title to DisplayAirportStatus', () => {
     const wrapper = shallow(<App />);
     
     const displayAirportStatus1 = wrapper.find('DisplayAirportStatus').at(0);

@@ -77,25 +77,25 @@ describe('DisplayAirportStatus test', function() {
     expect(html.includes('<td>A</td><td>a</td><td>12.12</td>')).to.be.true;
   });
   
-  xit('render title', () => {
+  it('render title', () => {
     const wrapper = shallow(<DisplayAirportStatus data={ airports } delayed={ true } title="Some Title"/>);
     
     expect(wrapper.html().includes('<h2>Some Title</h2>')).to.be.true;
   });
   
-  xit('title has no errors', () => {
+  it('title has no errors', () => {
     const result = DisplayAirportStatus.propTypes.title({title: 'Some Thing'}, 'title', 'DisplayAirportStatus');
     
     expect(result).to.be.null;
   });
 
-  xit('title words should be in uppercase', () => {
+  it('title words should be in uppercase', () => {
     const result = DisplayAirportStatus.propTypes.title({title: 'Some title value'}, 'title', 'DisplayAirportStatus');
     
     expect(result.message).to.be.eql('Each word of title for DisplayAirportStatus should be capitalized');
   });
 
-  xit('title has default', () => {
+  it('title has default', () => {
     expect(DisplayAirportStatus.defaultProps.title).to.be.eql('Please Set A Title');
   });
 });
