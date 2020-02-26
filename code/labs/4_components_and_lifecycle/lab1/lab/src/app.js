@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Airport from './airport';
 import DisplayAirportStatus from './display-airport-status';
+import Swap from './swap';
 
 export default class App extends Component {
   constructor(props) {
@@ -54,6 +55,7 @@ export default class App extends Component {
   
   render() {
     return <div>
+      <Swap><p>part one</p><p>part two</p></Swap>
       <h1>Airport Status</h1>
       <DisplayAirportStatus data={ this.state.airportInfo }></DisplayAirportStatus>
     </div>;

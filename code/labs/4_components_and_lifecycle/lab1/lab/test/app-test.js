@@ -124,7 +124,7 @@ describe('app test', function() {
     expect(app.changeData.called).to.be.true;
   });
   
-  xit('App renders Swap', () => {            
+  it('App renders Swap', () => {
     //App renders <Swap><p>part one</p><p>part two</p></Swap>
     expect(shallow(<App/>).text().includes('<Swap />')).to.be.true;
     console.log(render(<App />).text());

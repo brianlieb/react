@@ -16,49 +16,48 @@ describe('Swap test', function() {
   
   afterEach(() => sandbox.restore());
 
-  xit('Swap renders error if zero children provided', () => {
+  it('Swap renders error if zero children provided', () => {
     const wrapper = shallow(<Swap />);
     
     expect(wrapper.text()).to.be.eql('Please provide two children');
   });
 
-  xit('Swap renders error if one children provided', () => {
+  it('Swap renders error if one children provided', () => {
     const wrapper = shallow(<Swap><span/></Swap>);
-    
     expect(wrapper.text()).to.be.eql('Please provide two children');
   });
 
-  xit('Swap renders error if more than two children provided', () => {
+  it('Swap renders error if more than two children provided', () => {
     const wrapper = shallow(<Swap><span/><hr/><span/></Swap>);
     
     expect(wrapper.text()).to.be.eql('Please provide two children');
   });
-  
-  xit('Swap has a default property for showfirst', () => {
+
+  it('Swap has a default property for showfirst', () => {
     const wrapper = shallow(<Swap />);
     
     expect(wrapper.instance().props.showfirst).to.be.true;
   });
 
-  xit('Swap takes showfirst property', () => {
+  it('Swap takes showfirst property', () => {
     const wrapper = shallow(<Swap showfirst={ false }/>);
     
     expect(wrapper.instance().props.showfirst).to.be.false;
   });
 
-  xit('Swap renders first when showfirst is not set', () => {
+  it('Swap renders first when showfirst is not set', () => {
     const wrapper = shallow(<Swap><span>A</span><span>B</span></Swap>);
     
     expect(wrapper.text()).to.be.eql('AB');
   });
 
-  xit('Swap renders first when showfirst is set to true', () => {
+  it('Swap renders first when showfirst is set to true', () => {
     const wrapper = shallow(<Swap showfirst={ true }><span>A</span><span>B</span></Swap>);
     
     expect(wrapper.text()).to.be.eql('AB');
   });
 
-  xit('Swap renders second when showfirst is set to false', () => {
+  it('Swap renders second when showfirst is set to false', () => {
     const wrapper = shallow(<Swap showfirst={ false }><span>A</span><span>B</span></Swap>);
     
     expect(wrapper.text()).to.be.eql('BA');
