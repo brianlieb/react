@@ -9,18 +9,27 @@ import PropTypes from 'prop-types';
 export default class App extends Component {
   constructor(props) {
     super(props);
-    
+    this.store = createAirportStore();
   } 
   
-  componentDidMount() {               
-  }  
-  
-  componentWillUnmount() {
-  }                    
-  
-  fetchAirportsStatus() {                       
+  componentDidMount() {
+    setInterval(() => this.fetchAirportsStatus(), 1000);
+    this.unsubscribe = this.store.subscribe(() => this.setState({}));
   }
-  
+
+  componentWillUnmount() {
+    this.unsubscribe();
+  }
+
+  fetchAirportsStatus() {
+    Service.get()
+      .then(airports => this.store.dispatch(createUpdate(airports)));
+  }
+
+  getChildContext() {
+    return {store: this.store};
+  }
+
   render() {
     return <div>
       <BrowserRouter>
@@ -39,3 +48,5 @@ export default class App extends Component {
     </div>;
   }
 }
+
+App.childContextTypes =  {store: PropTypes.object.isRequired};

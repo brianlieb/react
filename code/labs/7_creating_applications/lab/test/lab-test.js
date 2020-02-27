@@ -19,7 +19,7 @@ describe('lab test', function() {
   
   afterEach(() => sandbox.restore());
   
-  xit('Lab renders App into contents', () => {
+  it('Lab renders App into contents', () => {
     const getElementByIdStub = sandbox.stub(document, 'getElementById')
       .withArgs('contents');
     

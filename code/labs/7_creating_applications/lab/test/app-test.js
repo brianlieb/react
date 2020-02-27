@@ -27,7 +27,7 @@ describe('app test', function() {
   
   afterEach(() => sandbox.restore());
   
-  xit('component renders links to add airport and display status', () => {
+  it('component renders links to add airport and display status', () => {
     const wrapper = render(<App />);
                
     const html = wrapper.html();
@@ -36,13 +36,13 @@ describe('app test', function() {
     expect(html.includes('href="/display">Display Status')).to.be.true;
   });
   
-  xit('component creates a store', () => {
+  it('component creates a store', () => {
     const component = new App();
     
     expect(component.store.getState()).to.be.eql({ airports: [] });
   });
   
-  xit('component subscribes to the store in the componentDidMount method', () => {
+  it('component subscribes to the store in the componentDidMount method', () => {
     const unsubscribeFunction = function() {};
     let registeredCallback;
     
@@ -67,7 +67,7 @@ describe('app test', function() {
     expect(setStateStub.called).to.be.true;
   });                                      
   
-  xit('component unsubscribes in the componentWillUnmount method', () => {
+  it('component unsubscribes in the componentWillUnmount method', () => {
     const component = new App();
     
     component.unsubscribe = sandbox.stub();
@@ -77,7 +77,7 @@ describe('app test', function() {
     expect(component.unsubscribe.called).to.be.true;
   });
   
-  xit('component triggers fetchAirportsStatus every second', () => {
+  it('component triggers fetchAirportsStatus every second', () => {
     const component = new App();
     
     component.fetchAirportsStatus = sandbox.stub();
@@ -94,7 +94,7 @@ describe('app test', function() {
     expect(component.fetchAirportsStatus.called).to.be.true;
   });
   
-  xit('fetchAirportsStatus calls get on the Service', () => {
+  it('fetchAirportsStatus calls get on the Service', () => {
     const stub = sandbox.stub(Service, 'get')
       .returns({ then: func => func([{a: 1, b: 2}]) });
     
@@ -105,7 +105,7 @@ describe('app test', function() {
     expect(stub.called).to.be.true;
   });
   
-  xit('update store with received airport status', () => {
+  it('update store with received airport status', () => {
     sandbox.stub(Service, 'get')
       .returns({ then: func => func([{a: 1, b: 2}]) });
       
@@ -121,13 +121,13 @@ describe('app test', function() {
     expect(requestedAction.type).to.be.eql(UPDATE);
   });
   
-  xit('component provides childContext', () => {
+  it('component provides childContext', () => {
     const component = new App();
                 
     expect(component.getChildContext().store).to.be.eql(component.store);
   });
   
-  xit('need to setup context property for store', () => {
+  it('need to setup context property for store', () => {
     expect(App.childContextTypes).to.be.eql({ store: PropTypes.object.isRequired });
   });
 });

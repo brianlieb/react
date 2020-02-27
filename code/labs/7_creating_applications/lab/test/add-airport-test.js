@@ -21,7 +21,7 @@ describe('add airport test', function() {
   
   afterEach(() => sandbox.restore());
 
-  xit('component displays form', () => {
+  it('component displays form', () => {
     const wrapper = render(<AddAirport />);
     
     const html = wrapper.html();
@@ -31,7 +31,7 @@ describe('add airport test', function() {
     expect(html.includes('<button')).to.be.true;
   });
 
-  xit('clicking button calls addAirport with airport code', () => {
+  it('clicking button calls addAirport with airport code', () => {
     const someinput = Math.random().toString();
     const stub = sandbox.stub(AddAirport.prototype, 'addAirport')
       .withArgs(someinput);
@@ -48,7 +48,7 @@ describe('add airport test', function() {
     expect(stub.called).to.be.true;
   });
   
-  xit('addAirport sends airport code to the service', () => {
+  it('addAirport sends airport code to the service', () => {
     const stub = sandbox.stub(Service, 'add')
       .withArgs('DEN')
       .returns(Promise.resolve(''));
@@ -61,7 +61,7 @@ describe('add airport test', function() {
     expect(stub.called).to.be.true;
   });
 
-  xit('addAirport sets return message from service to state', () => {
+  it('addAirport sets return message from service to state', () => {
     sandbox.stub(Service, 'add')
       .withArgs('DEN')
       .returns({then: func => func('Added Denver International')});
@@ -74,7 +74,7 @@ describe('add airport test', function() {
     expect(component.setState.getCalls()[0].args[0]).to.be.eql({ message: 'Added Denver International'});
   });
 
-  xit('component renders message from the server', () => {
+  it('component renders message from the server', () => {
     const wrapper = mount(<AddAirport />);
 
     const message = `some message ${Math.random()}`;

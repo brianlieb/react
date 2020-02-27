@@ -14,26 +14,26 @@ describe('store test', function() {
     ]
   });
   
-  xit('canary test', () => {
+  it('canary test', () => {
     expect(true).to.be.true;
   });             
   
-  xit('create store with reducer that returns given store', () => {
+  it('create store with reducer that returns given store', () => {
     const store = airportStore.createAirportStore();
-   
+
     const state = store.getState();
     
     expect(state.airports).to.be.eql([]);
   });
   
-  xit('create update action', () => {
+  it('create update action', () => {
     const action = airportStore.createUpdate(['whatever']);
     
     expect(action.type).to.be.eql(airportStore.UPDATE);
     expect(action.airports).to.be.eql(['whatever']);
   });                                    
   
-  xit('reducer update data for an airport', () => {
+  it('reducer update data for an airport', () => {
     const store = airportStore.reducers(sampleStore, airportStore.createUpdate(
       deepFreeze([new Airport('IAH', 'Houton Bush', 90, false)])));
     
@@ -45,7 +45,7 @@ describe('store test', function() {
     expect(airport.delay).to.be.eql(false);
   });
 
-  xit('reducer update data with new airport', () => {
+  it('reducer update data with new airport', () => {
     const store = airportStore.reducers(sampleStore, airportStore.createUpdate(deepFreeze([new Airport('IAD', 'Dulles', 80, false)])));
     
     const houston = store.airports.find(airport => airport.code === 'IAH');

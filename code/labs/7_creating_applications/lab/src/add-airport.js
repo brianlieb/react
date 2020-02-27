@@ -10,6 +10,8 @@ export default class AddAirport extends Component {
   } 
   
   addAirport(airportCode) {
+    Service.add(airportCode)
+      .then(txt => this.setState({message: txt}));
   }
   
   render() {

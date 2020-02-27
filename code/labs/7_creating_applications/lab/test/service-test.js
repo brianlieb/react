@@ -26,7 +26,7 @@ describe('service test', function() {
   
   afterEach(() => sandbox.restore());
 
-  xit('add sends request to the server', () => {
+  it('add sends request to the server', () => {
     Service.add('ORD');
                                     
     const call = fetchStub.getCalls()[0];
@@ -35,18 +35,18 @@ describe('service test', function() {
       body: JSON.stringify({ code: 'ORD' }) });
   });
   
-  xit('add returns promise with response from fetch', () => {
+  it('add returns promise with response from fetch', () => {
     expect(Service.add('ORD')).to.eventually.eql('message from server');
   });
   
-  xit('get sends request to the server', () => {
+  it('get sends request to the server', () => {
     Service.get();
     
     const call = fetchStub.getCalls()[0];
     expect(call.args[0]).to.be.eql('/airport');
   });
 
-  xit('get extracts JSON from response', () => {
+  it('get extracts JSON from response', () => {
     expect(Service.get()).to.eventually.eql([{a: 1, b: 2}]);    
   });
 });

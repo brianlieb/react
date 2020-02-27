@@ -30,11 +30,11 @@ describe('display status test', function() {
   
   afterEach(() => sandbox.restore());
   
-  xit('component class sets contextTypes', () => {
+  it('component class sets contextTypes', () => {
     expect(DisplayStatus.contextTypes).to.be.eql({ store: PropTypes.object });
   });
   
-  xit('component gets store from context and renders', () => {
+  it('component gets store from context and renders', () => {
     const wrapper = shallow(<DisplayStatus />, { context });
     const html = wrapper.html();
                                    

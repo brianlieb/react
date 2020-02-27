@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 export default class DisplayStatus extends Component {
-  render() { 
+  render() {
     
     //const airports = this.context.store.getState().airports;   
 
@@ -23,4 +23,7 @@ export default class DisplayStatus extends Component {
     </div>;
   }
 }
+
+DisplayStatus.contextTypes =  {store: PropTypes.object};
+
 
