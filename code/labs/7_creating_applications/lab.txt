@@ -1,0 +1,25 @@
+In this lab we will implement a program that gets airport status from the server and displays it. We will use local storage and redux to store data on the client side.
+
+Please work on the tests in the following sequence:
+store-test
+service-test
+add-airport-test
+display-airport-test
+app-test
+lab-test
+
+Commands you need:
+npm install
+npm test
+
+To view the coverage:
+npm run coverage
+
+To lint:
+npm run eslint
+
+After all tests pass:
+npm run build
+npm start
+
+To view the application, visit http://localhost:3000
