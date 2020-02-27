@@ -13,7 +13,7 @@ export const reducers = function(state, action) {
   default:
     return state;
   }
-}
+};
 
 export function createUpdate(airports) {
   return { type: UPDATE, airports };

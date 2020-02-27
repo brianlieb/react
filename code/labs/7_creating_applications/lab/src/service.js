@@ -15,4 +15,4 @@ export default class Service {
     return fetch('/airport')
       .then(response => response.json());
   }
- }
+}
