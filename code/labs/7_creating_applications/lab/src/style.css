@@ -1,0 +1,28 @@
+.main {            
+  text-align: center;
+}
+
+.delay {            
+  text-align: center;
+}
+
+a {              
+  text-decoration: none;
+}
+
+a.active {              
+  color: gray;
+  pointer-events: none;
+}
+
+tr:first-of-type {
+  background-color: orange;
+}
+
+tr:nth-of-type(even) {
+  background-color: lightgray;
+}
+
+tr:nth-of-type(odd):not(:first-child) {
+  background-color: beige;
+}
