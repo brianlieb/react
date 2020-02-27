@@ -8,9 +8,9 @@ export const UPDATE = 'update';
 
 export const reducers = function(state, action) {
   switch(action.type) {
-    case UPDATE:
+  case UPDATE:
     return {airports: [...state.airports.filter(a => action.airports.every(b => b.code !== a.code)), ...action.airports]};
-    default:
+  default:
     return state;
   }
 }
