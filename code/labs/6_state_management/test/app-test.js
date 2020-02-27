@@ -25,7 +25,5 @@ describe('app test', function() {
     expect(true).to.be.true;
   });
 
-  xit('App constructor passes props to super', () => {
-    expect(app.props).to.be.eql({});
-  });
-}
+
+});

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import store, { createAddWorker } from './store';
-import Worker from 'worker';
+import Worker from './worker';
 
 export default class AddTask extends Component {
   constructor(props) {
