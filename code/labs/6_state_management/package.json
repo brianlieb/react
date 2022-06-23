@@ -56,7 +56,7 @@
     "eslint": "^4.19.1",
     "eslint-plugin-react": "^7.8.2",
     "istanbul": ">1.0.0-alpha",
-    "jsdom": "10.0.0",
+    "jsdom": "16.5.0",
     "lite-server": "^2.3.0",
     "mocha": "^5.2.0",
     "mocha-clearscreen-reporter": "^1.0.1",
